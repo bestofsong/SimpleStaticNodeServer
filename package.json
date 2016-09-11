@@ -1,0 +1,8 @@
+{
+  "name": "hello",
+  "version": "0.0.1",
+  "private": "true",
+  "dependencies": {
+    "mongoose": "^4.6.0"
+  }
+}
