@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <script src="clipboard.min.js"></script>
-
   <script>
     var clipboard = new Clipboard('.btn');
     clipboard.on('success', function(e) {
@@ -12,7 +11,7 @@
       alert('did copy text:' + e.text);
       console.info('Trigger:', e.trigger);
 
-      e.clearSelection();
+      // e.clearSelection();
     });
 
     clipboard.on('error', function(e) {
