@@ -10,10 +10,8 @@
       console.info('Action:', e.action);
       alert('did copy text:' + e.text);
       console.info('Trigger:', e.trigger);
-
-      // e.clearSelection();
+      e.clearSelection();
     });
-
     clipboard.on('error', function(e) {
       console.error('Action:', e.action);
       console.error('Trigger:', e.trigger);
@@ -21,15 +19,12 @@
     });
   </script>
 </head>
+
 <body>
-
   <input id="foo" value="sth to copy/paste">
-
   <button class="btn" data-clipboard-target="#foo">
     <img alt="Copy to clipboard">
   </button>
-
-
-  
 </body>
+
 </html>
