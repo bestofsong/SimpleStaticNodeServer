@@ -6,7 +6,7 @@
   <script src="clipboard.min.js"></script>
 
   <script>
-    let clipboard = new Clipboard('.btn');
+    var clipboard = new Clipboard('.btn');
     clipboard.on('success', function(e) {
       console.info('Action:', e.action);
       alert('did copy text:' + e.text);
