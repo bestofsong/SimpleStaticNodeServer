@@ -11,6 +11,8 @@
   <button class="btn" data-clipboard-target="#foo">
     <img alt="Copy to clipboard">
   </button>
+  <button onclick="window.location.href='mobile://send?akey=avalue';"></button>
+
   <script>
     var clipboard = new Clipboard('.btn');
     clipboard.on('success', function(e) {
