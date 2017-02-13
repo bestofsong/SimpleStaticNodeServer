@@ -3,10 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <script src="clipboard.min.js"></script>
+
+  <script>
+    new Clipboard('.btn');
+  </script>
 </head>
 <body>
 
-  Hello, world!
+  <input id="foo" value="sth to copy/paste">
+
+  <button class="btn" data-clipboard-target="#foo">
+    <img alt="Copy to clipboard">
+  </button>
+
+
   
 </body>
 </html>
