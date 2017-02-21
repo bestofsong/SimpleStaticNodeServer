@@ -4,13 +4,39 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <script src="clipboard.js"></script>
-  <meta http-equiv="Refresh" content="3; url=mobile://send?akey=avalue">
+  <script>
+    function createCookie(name,value,days) {
+      var expires = "";
+      if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+      }
+      document.cookie = name + "=" + value + expires + "; path=/";
+    }
+
+    function readCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+      }
+      return null;
+    }
+    if (!readCookie('ship')) {
+      createCookie('ship', 'heart of gold @' + new Date().toISOString(), 15);
+    }
+    var secret = "channel=weibo&ship=" + encodeURIComponent(readCookie('ship') + '');
+    var secretLink = "mobile://deep-link?channel=weibo&ship=" + encodeURIComponent(readCookie('ship') + '');
+  </script>
 </head>
 
 <body>
-  <input id="foo" value="sth to copy/paste">
-  <button class="btn" data-clipboard-target="#foo">
-    <img alt="Copy to clipboard">
+  <input id="foo" value="">
+  <button id="click"  class="btn" data-clipboard-target="#foo">
+    <img alt="点击下载链接时把数据拷贝到剪切板">
   </button>
   <button onclick="window.location.href='mobile://send?akey=avalue';">Send to APP</button>
 
@@ -27,6 +53,10 @@
       console.error('Trigger:', e.trigger);
       alert('failed to copy text');
     });
+    document.getElementById("foo").value = secretLink;
+    setTimeout(function() {
+      window.location.href = secretLink;
+    }, 1000)
   </script>
 </body>
 
