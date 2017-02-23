@@ -25,11 +25,11 @@
       }
       return null;
     }
-    if (!readCookie('ship')) {
-      createCookie('ship', 'heart of gold @' + new Date().toISOString(), 15);
+    if (!readCookie('mobile-deep-link-lp')) {
+      var secret = "channel=weibo";
+      createCookie('mobile-deep-link-lp', secret, 15);
     }
-    var secret = "channel=weibo&ship=" + encodeURIComponent(readCookie('ship') + '');
-    var secretLink = "mobile://deep-link?channel=weibo&ship=" + encodeURIComponent(readCookie('ship') + '');
+    var secretLink = "mobile://deep-link?" + readCookie('mobile-deep-link-lp');
   </script>
 </head>
 
@@ -38,7 +38,7 @@
   <button id="click"  class="btn" data-clipboard-target="#foo">
     <img alt="点击下载链接时把数据拷贝到剪切板">
   </button>
-  <button onclick="window.location.href='mobile://send?akey=avalue';">Send to APP</button>
+  <button onclick="window.location.href=secretLink;">Send to APP</button>
 
   <script>
     var clipboard = new Clipboard('.btn');
